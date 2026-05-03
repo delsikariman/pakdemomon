@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ayam Geprek Pak De Momon – Padang</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --red:    #C0281A;
+    --orange: #E85D1A;
+    --cream:  #FDF5E8;
+    --dark:   #1A0A04;
+    --mid:    #5A1E0E;
+    --gold:   #D4881C;
+    --white:  #FFFDF8;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--dark);
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; width: 100%; z-index: 100;
+    background: rgba(26,10,4,.92);
+    backdrop-filter: blur(8px);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 5%;
+    height: 64px;
+  }
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem; font-weight: 700;
+    color: var(--cream); letter-spacing: .02em;
+  }
+  .nav-logo span { color: var(--orange); }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    text-decoration: none; font-size: .85rem; font-weight: 400;
+    color: rgba(253,245,232,.65);
+    transition: color .2s;
+  }
+  .nav-links a:hover { color: var(--cream); }
+  .nav-cta {
+    background: var(--red); color: var(--cream) !important;
+    padding: .45rem 1.1rem; border-radius: 6px;
+    font-weight: 500 !important;
+    transition: background .2s !important;
+  }
+  .nav-cta:hover { background: var(--orange) !important; color: var(--cream) !important; }
+
+  /* ── HERO ── */
+  #hero {
+    min-height: 100vh;
+    background: var(--dark);
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    text-align: center;
+    padding: 100px 5% 60px;
+    position: relative; overflow: hidden;
+  }
+  .fire-ring {
+    position: absolute;
+    border-radius: 50%;
+    opacity: .12;
+    animation: pulse 4s ease-in-out infinite;
+  }
+  .fire-ring:nth-child(1) { width:520px; height:520px; background:radial-gradient(circle,#E85D1A,transparent 70%); animation-delay:0s; }
+  .fire-ring:nth-child(2) { width:360px; height:360px; background:radial-gradient(circle,#C0281A,transparent 70%); animation-delay:1.3s; }
+  .fire-ring:nth-child(3) { width:200px; height:200px; background:radial-gradient(circle,#D4881C,transparent 70%); animation-delay:2.6s; }
+  @keyframes pulse {
+    0%,100% { transform: scale(1); opacity:.12; }
+    50%      { transform: scale(1.15); opacity:.22; }
+  }
+  .hero-badge {
+    display: inline-block;
+    border: 1px solid rgba(232,93,26,.5);
+    color: var(--orange);
+    font-size: .75rem; font-weight: 500; letter-spacing: .12em;
+    text-transform: uppercase;
+    padding: .4rem 1rem; border-radius: 100px;
+    margin-bottom: 1.5rem;
+    animation: fadeUp .8s ease both;
+  }
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.8rem, 7vw, 5.5rem);
+    font-weight: 900; line-height: 1.06;
+    color: var(--cream);
+    animation: fadeUp .8s ease .15s both;
+  }
+  .hero-title em { color: var(--orange); font-style: italic; }
+  .hero-sub {
+    font-size: 1rem; font-weight: 300;
+    color: rgba(253,245,232,.6);
+    margin: 1.2rem auto 2.2rem;
+    max-width: 460px; line-height: 1.7;
+    animation: fadeUp .8s ease .3s both;
+  }
+  .hero-btns {
+    display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center;
+    animation: fadeUp .8s ease .45s both;
+  }
+  .btn-primary {
+    background: var(--red); color: var(--cream);
+    border: none; padding: .85rem 2rem;
+    border-radius: 8px; font-family: 'DM Sans', sans-serif;
+    font-size: .95rem; font-weight: 500; cursor: pointer;
+    text-decoration: none;
+    transition: background .2s, transform .15s;
+  }
+  .btn-primary:hover { background: var(--orange); transform: translateY(-2px); }
+  .btn-outline {
+    border: 1.5px solid rgba(253,245,232,.35); color: var(--cream);
+    padding: .85rem 2rem; border-radius: 8px;
+    font-family: 'DM Sans', sans-serif; font-size: .95rem; font-weight: 400;
+    text-decoration: none; cursor: pointer;
+    transition: border-color .2s, transform .15s;
+  }
+  .btn-outline:hover { border-color: var(--cream); transform: translateY(-2px); }
+  .hero-stats {
+    display: flex; gap: 2.5rem; margin-top: 3.5rem;
+    animation: fadeUp .8s ease .6s both;
+  }
+  .stat { text-align: center; }
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem; font-weight: 700; color: var(--cream);
+  }
+  .stat-label { font-size: .75rem; color: rgba(253,245,232,.5); margin-top: .2rem; letter-spacing: .06em; text-transform: uppercase; }
+  @keyframes fadeUp {
+    from { opacity:0; transform:translateY(24px); }
+    to   { opacity:1; transform:translateY(0); }
+  }
+
+  /* ── SECTION COMMON ── */
+  section { padding: 90px 5%; }
+  .section-tag {
+    display: inline-block;
+    font-size: .72rem; font-weight: 500; letter-spacing: .14em;
+    text-transform: uppercase; color: var(--red);
+    margin-bottom: .8rem;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 4vw, 3rem); font-weight: 700;
+    line-height: 1.15; color: var(--dark);
+    margin-bottom: 1rem;
+  }
+  .section-sub {
+    font-size: .95rem; font-weight: 300; color: #7A4A38;
+    max-width: 480px; line-height: 1.7;
+  }
+
+  /* ── KEUNGGULAN ── */
+  #keunggulan { background: var(--white); }
+  .keunggulan-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem; margin-top: 3rem;
+  }
+  .k-card {
+    background: var(--cream); border-radius: 12px;
+    padding: 1.8rem 1.5rem;
+    border-left: 4px solid var(--orange);
+    transition: transform .2s, box-shadow .2s;
+  }
+  .k-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(192,40,26,.1); }
+  .k-icon { font-size: 1.8rem; margin-bottom: 1rem; }
+  .k-title { font-weight: 500; font-size: 1rem; margin-bottom: .4rem; color: var(--mid); }
+  .k-desc { font-size: .875rem; color: #8A5842; line-height: 1.6; }
+
+  /* ── MENU ── */
+  #menu { background: var(--dark); }
+  #menu .section-title { color: var(--cream); }
+  #menu .section-tag { color: var(--orange); }
+  #menu .section-sub { color: rgba(253,245,232,.55); }
+  .menu-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem; margin-top: 3rem;
+  }
+  .menu-card {
+    background: rgba(255,255,255,.05);
+    border: 1px solid rgba(255,255,255,.09);
+    border-radius: 14px; padding: 2rem 1.5rem;
+    position: relative; overflow: hidden;
+    transition: transform .2s, background .2s;
+  }
+  .menu-card:hover { transform: translateY(-4px); background: rgba(255,255,255,.09); }
+  .menu-card.popular::before {
+    content: "TERLARIS";
+    position: absolute; top: 14px; right: -22px;
+    background: var(--orange); color: var(--cream);
+    font-size: .6rem; font-weight: 500; letter-spacing: .1em;
+    padding: .35rem 2.2rem;
+    transform: rotate(35deg);
+  }
+  .menu-emoji { font-size: 2.4rem; margin-bottom: 1rem; }
+  .menu-name { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 700; color: var(--cream); margin-bottom: .4rem; }
+  .menu-desc { font-size: .83rem; color: rgba(253,245,232,.5); line-height: 1.6; margin-bottom: 1.2rem; }
+  .menu-price { font-size: 1rem; font-weight: 500; color: var(--gold); }
+  .spicy {
+    display: inline-flex; gap: 2px; align-items: center;
+    font-size: .7rem; color: var(--orange); margin-left: .5rem;
+  }
+
+  /* ── LOKASI ── */
+  #lokasi { background: var(--cream); }
+  .lokasi-inner {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 3rem; align-items: start; margin-top: 3rem;
+  }
+  .lokasi-info { display: flex; flex-direction: column; gap: 1.4rem; }
+  .info-row { display: flex; gap: 1rem; align-items: flex-start; }
+  .info-icon {
+    width: 42px; height: 42px; border-radius: 8px;
+    background: var(--red); color: var(--cream);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.1rem; flex-shrink: 0;
+  }
+  .info-label { font-size: .72rem; text-transform: uppercase; letter-spacing: .1em; color: #A07060; margin-bottom: .2rem; }
+  .info-val { font-size: .95rem; font-weight: 400; color: var(--dark); line-height: 1.5; }
+  .map-wrap {
+    border-radius: 14px; overflow: hidden;
+    border: 2px solid rgba(192,40,26,.15);
+    height: 340px;
+  }
+  .map-wrap iframe { width: 100%; height: 100%; border: none; display: block; }
+
+  /* ── ULASAN ── */
+  #ulasan { background: var(--white); }
+  .ulasan-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem; margin-top: 3rem;
+  }
+  .ulasan-card {
+    background: var(--cream); border-radius: 12px;
+    padding: 1.6rem 1.5rem;
+    border-top: 3px solid var(--orange);
+  }
+  .stars { color: var(--gold); font-size: .9rem; margin-bottom: .8rem; letter-spacing: 2px; }
+  .ulasan-text { font-size: .875rem; line-height: 1.7; color: #5A3525; margin-bottom: 1rem; font-style: italic; }
+  .ulasan-author { font-size: .8rem; font-weight: 500; color: var(--mid); }
+
+  /* ── CTA ── */
+  #cta {
+    background: var(--red);
+    text-align: center; padding: 80px 5%;
+  }
+  #cta .section-title { color: var(--cream); }
+  #cta .section-sub { color: rgba(253,245,232,.7); margin: 0 auto 2rem; }
+  .btn-white {
+    background: var(--cream); color: var(--red);
+    border: none; padding: .9rem 2.4rem; border-radius: 8px;
+    font-family: 'DM Sans', sans-serif; font-size: .95rem; font-weight: 500;
+    cursor: pointer; text-decoration: none;
+    transition: background .2s, transform .15s;
+    display: inline-block;
+  }
+  .btn-white:hover { background: var(--white); transform: translateY(-2px); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--dark); color: rgba(253,245,232,.5);
+    padding: 40px 5%; text-align: center;
+    font-size: .83rem; line-height: 1.8;
+  }
+  footer strong { color: var(--cream); }
+  footer a { color: var(--orange); text-decoration: none; }
+  .footer-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem; font-weight: 700;
+    color: var(--cream); margin-bottom: .5rem;
+  }
+  .footer-logo span { color: var(--orange); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 680px) {
+    .nav-links { display: none; }
+    .hero-stats { gap: 1.5rem; }
+    .lokasi-inner { grid-template-columns: 1fr; }
+    .map-wrap { height: 260px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Pak De <span>Momon</span></div>
+  <ul class="nav-links">
+    <li><a href="#keunggulan">Keunggulan</a></li>
+    <li><a href="#menu">Menu</a></li>
+    <li><a href="#lokasi">Lokasi</a></li>
+    <li><a href="#ulasan">Ulasan</a></li>
+    <li><a href="https://maps.app.goo.gl/example" class="nav-cta">Pesan Sekarang</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="fire-ring"></div>
+  <div class="fire-ring"></div>
+  <div class="fire-ring"></div>
+  <div class="hero-badge">🌶 Padang, Sumatera Barat</div>
+  <h1 class="hero-title">Ayam Geprek<br><em>Pak De Momon</em></h1>
+  <p class="hero-sub">Ayam crispy digeprek dengan sambal segar pilihan — pedas, gurih, dan bikin ketagihan. Makan di tempat atau bungkus pulang.</p>
+  <div class="hero-btns">
+    <a href="#menu" class="btn-primary">Lihat Menu</a>
+    <a href="#lokasi" class="btn-outline">Temukan Kami</a>
+  </div>
+  <div class="hero-stats">
+    <div class="stat">
+      <div class="stat-num">85+</div>
+      <div class="stat-label">Ulasan</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">Rp25rb</div>
+      <div class="stat-label">Mulai Dari</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">2x</div>
+      <div class="stat-label">Layanan</div>
+    </div>
+  </div>
+</section>
+
+<!-- KEUNGGULAN -->
+<section id="keunggulan">
+  <div style="max-width:720px;">
+    <span class="section-tag">Kenapa Kami?</span>
+    <h2 class="section-title">Rasa Otentik,<br>Harga Bersahabat</h2>
+    <p class="section-sub">Setiap suapan terasa seperti dimasak langsung oleh tangan berpengalaman — karena memang iya.</p>
+  </div>
+  <div class="keunggulan-grid">
+    <div class="k-card">
+      <div class="k-icon">🍗</div>
+      <div class="k-title">Ayam Crispy Segar</div>
+      <div class="k-desc">Digoreng fresh setiap hari, renyah di luar dan juicy di dalam.</div>
+    </div>
+    <div class="k-card">
+      <div class="k-icon">🌶</div>
+      <div class="k-title">Sambal Matah & Bawang</div>
+      <div class="k-desc">Pilihan sambal segar dengan level kepedasan yang bisa disesuaikan.</div>
+    </div>
+    <div class="k-card">
+      <div class="k-icon">💵</div>
+      <div class="k-title">Harga Terjangkau</div>
+      <div class="k-desc">Rp 25.000–50.000 per orang. Kenyang dan puas tanpa khawatir dompet.</div>
+    </div>
+    <div class="k-card">
+      <div class="k-icon">🏠</div>
+      <div class="k-title">Nyaman & Bersih</div>
+      <div class="k-desc">Tersedia kursi indoor dan outdoor. Tempat cuci tangan tersedia di dapur depan.</div>
+    </div>
+  </div>
+</section>
+
+<!-- MENU -->
+<section id="menu">
+  <div style="max-width:720px;">
+    <span class="section-tag">Menu Kami</span>
+    <h2 class="section-title">Pilihan Favorit</h2>
+    <p class="section-sub">Dari ayam geprek hingga mendoan — semua dibuat dengan bahan pilihan segar.</p>
+  </div>
+  <div class="menu-grid">
+    <div class="menu-card popular">
+      <div class="menu-emoji">🍗</div>
+      <div class="menu-name">Ayam Geprek Sambel Matah</div>
+      <div class="menu-desc">Ayam goreng crispy dipukul geprek, disajikan dengan sambal matah segar khas Bali yang harum.</div>
+      <div class="menu-price">Rp 25.000 <span class="spicy">🌶🌶🌶</span></div>
+    </div>
+    <div class="menu-card">
+      <div class="menu-emoji">🌿</div>
+      <div class="menu-name">Ayam Geprek Sambel Bawang</div>
+      <div class="menu-desc">Sambal bawang goreng yang gurih dan pedas, perpaduan sempurna dengan ayam crispy.</div>
+      <div class="menu-price">Rp 25.000 <span class="spicy">🌶🌶</span></div>
+    </div>
+    <div class="menu-card">
+      <div class="menu-emoji">🐟</div>
+      <div class="menu-name">Ikan Goreng Saos Lada Hitam</div>
+      <div class="menu-desc">Ikan segar digoreng gurih, disiram saos lada hitam yang kaya rempah.</div>
+      <div class="menu-price">Rp 30.000 <span class="spicy">🌶</span></div>
+    </div>
+    <div class="menu-card">
+      <div class="menu-emoji">🫘</div>
+      <div class="menu-name">Tempe Mendoan</div>
+      <div class="menu-desc">Tempe tipis dibalut tepung bumbu, digoreng setengah matang — lembut dan renyah.</div>
+      <div class="menu-price">Rp 8.000</div>
+    </div>
+    <div class="menu-card">
+      <div class="menu-emoji">🥤</div>
+      <div class="menu-name">Minuman Segar</div>
+      <div class="menu-desc">Jus buah, milkshake, dan es jeruk peras — cocok untuk penyeimbang pedas.</div>
+      <div class="menu-price">Mulai Rp 10.000</div>
+    </div>
+    <div class="menu-card">
+      <div class="menu-emoji">🍚</div>
+      <div class="menu-name">Paket Nasi + Lauk</div>
+      <div class="menu-desc">Nasi putih hangat dengan lauk pilihan, air mineral — paket komplit siap santap.</div>
+      <div class="menu-price">Mulai Rp 35.000</div>
+    </div>
+  </div>
+</section>
+
+<!-- LOKASI -->
+<section id="lokasi">
+  <div style="max-width:720px;">
+    <span class="section-tag">Temukan Kami</span>
+    <h2 class="section-title">Lokasi & Jam Buka</h2>
+  </div>
+  <div class="lokasi-inner">
+    <div class="lokasi-info">
+      <div class="info-row">
+        <div class="info-icon">📍</div>
+        <div>
+          <div class="info-label">Alamat</div>
+          <div class="info-val">Jl. Gajah Mada Dalam No.31b, Kp. Olo, Kec. Nanggalo, Kota Padang, Sumatera Barat 25173</div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">🕐</div>
+        <div>
+          <div class="info-label">Jam Buka</div>
+          <div class="info-val">Senin – Minggu<br>10.00 – 21.00 WIB</div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">🛵</div>
+        <div>
+          <div class="info-label">Layanan</div>
+          <div class="info-val">Makan di tempat · Bungkus / Take Away</div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">💰</div>
+        <div>
+          <div class="info-label">Kisaran Harga</div>
+          <div class="info-val">Rp 25.000 – Rp 50.000 per orang</div>
+        </div>
+      </div>
+      <a href="https://maps.google.com/?cid=3458212791636092976" target="_blank" class="btn-primary" style="align-self:flex-start; margin-top:.5rem;">
+        Buka di Google Maps →
+      </a>
+    </div>
+    <div class="map-wrap">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.0!2d100.3637779!3d-0.9110006!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2fd4b93449ea2abd%3A0x2ffe0a362b2e6830!2sAyam%20Geprek%20Pak%20De%20Momon!5e0!3m2!1sid!2sid!4v1"
+        allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+    </div>
+  </div>
+</section>
+
+<!-- ULASAN -->
+<section id="ulasan">
+  <div style="max-width:720px;">
+    <span class="section-tag">Kata Mereka</span>
+    <h2 class="section-title">Ulasan Pelanggan</h2>
+  </div>
+  <div class="ulasan-grid">
+    <div class="ulasan-card">
+      <div class="stars">★★★★★</div>
+      <p class="ulasan-text">"Bersih, sejuk, enak! Ayam gepreknya gurih dan sambalnya mantap. Harga paling worth it di sekitar sini."</p>
+      <div class="ulasan-author">— Pelanggan Setia, Padang</div>
+    </div>
+    <div class="ulasan-card">
+      <div class="stars">★★★★☆</div>
+      <p class="ulasan-text">"Makanannya enak banget, pedas yang pas. Tempat nyaman meski agak kecil. Cocok untuk makan siang berdua."</p>
+      <div class="ulasan-author">— Bonar S., Google Maps</div>
+    </div>
+    <div class="ulasan-card">
+      <div class="stars">★★★★★</div>
+      <p class="ulasan-text">"Makanan bintang lima dengan harga terjangkau. Ada AC, tempatnya bersih. Sangat direkomendasikan!"</p>
+      <div class="ulasan-author">— Alyssa F., Google Maps</div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="cta">
+  <span class="section-tag" style="color:rgba(253,245,232,.6);">Yuk Mampir!</span>
+  <h2 class="section-title">Lapar? Kami Siap<br>Melayani Anda</h2>
+  <p class="section-sub">Kunjungi langsung atau pesan bungkus — geprekkan yang menggugah selera menanti Anda.</p>
+  <a href="https://maps.google.com/?cid=3458212791636092976" target="_blank" class="btn-white">Cari Rute Sekarang</a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Pak De <span>Momon</span></div>
+  <p><strong>Ayam Geprek Pak De Momon</strong></p>
+  <p>Jl. Gajah Mada Dalam No.31b, Kp. Olo, Nanggalo, Padang, Sumatera Barat</p>
+  <p style="margin-top:.5rem;">© 2025 Ayam Geprek Pak De Momon. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
